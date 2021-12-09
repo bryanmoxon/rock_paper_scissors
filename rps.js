@@ -4,8 +4,6 @@ function computerPlay() {
     return options[random_num];
 }
 
-let computerSelection = computerPlay();
-
 function capitalize(string) {
     Capitalized = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     return Capitalized;
@@ -21,5 +19,25 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return "You lose! " + computerSelection + " beats " + playerSelection;
     }
+}
 
+function game() {
+    w = 0;
+    l = 0;
+    for(let i = 0; i < 5; i++) {
+        let playerSelection = window.prompt("Rock, Paper, Scissors?");
+        let computerSelection = computerPlay();
+        result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        if (result.includes("win")) {
+            w = w+1;
+        } else if (result.includes("lose")) {
+            l = l+1;
+        }
+    }
+    if (l < w) {
+        return "You win the round of 5!";
+    } else {
+        return "You lose the round of 5.";
+    }
 }
